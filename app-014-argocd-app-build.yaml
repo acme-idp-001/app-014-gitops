@@ -1,0 +1,23 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: component-001-build
+  namespace: app-014-build
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io  
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/acme-idp-001/component-001
+    targetRevision: HEAD
+    path: .helm/build
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app-014-build
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=false
