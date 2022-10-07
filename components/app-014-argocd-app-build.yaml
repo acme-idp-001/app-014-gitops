@@ -2,14 +2,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: component-003-build
+  name: component-004-build
   namespace: app-014-build
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
 spec:
   project: default
   source:
-    repoURL: https://github.com/acme-idp-001/component-003
+    repoURL: https://github.com/acme-idp-001/component-004
     targetRevision: HEAD
     path: .helm/build
   destination:
